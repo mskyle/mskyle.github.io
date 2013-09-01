@@ -4,7 +4,7 @@
   <title><![CDATA[Kyle's blog]]></title>
   <link href="http://mskyle.github.io/atom.xml" rel="self"/>
   <link href="http://mskyle.github.io/"/>
-  <updated>2013-08-29T18:54:07-04:00</updated>
+  <updated>2013-09-01T10:57:15-04:00</updated>
   <id>http://mskyle.github.io/</id>
   <author>
     <name><![CDATA[Kyle]]></name>
@@ -12,6 +12,65 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Stuff about Things]]></title>
+    <link href="http://mskyle.github.io/blog/2013/09/01/stuff-about-things/"/>
+    <updated>2013-09-01T08:22:00-04:00</updated>
+    <id>http://mskyle.github.io/blog/2013/09/01/stuff-about-things</id>
+    <content type="html"><![CDATA[<h3>What do we think we need to know</h3>
+
+<p>So, right now I&rsquo;m in the process of going from being a librarian to being a software developer. I&rsquo;m studying with a lot of great people at Launch Academy and it&rsquo;s a lot of fun so far, though I&rsquo;m often completely overwhelmed and/or confused. Right now we&rsquo;re moving from Object Oriented Programming to SQL; I feel good about the first and the second is something I&rsquo;ve interacted with in a half-assed way for many years (why, why, why didn&rsquo;t I take that databases class in library school?).</p>
+
+<p>It&rsquo;s gotten me thinking, though, about how we describe things, which is something librarians and coders both do a lot of. I think every librarian (or really anyone who&rsquo;s worked at the interface of books and people) has a story about a guy who wants a book, but only knows that it&rsquo;s big and blue. The great thing is that a knowledgable librarian (or bookstore employee) can often actually help this guy, especially if he&rsquo;s asking for a popular book.*</p>
+
+<h3>Why can&rsquo;t we do more to help that guy?</h3>
+
+<p>In general, though, we don&rsquo;t keep information about a book&rsquo;s color in its library record (<a href="http://portia.nesl.edu/screens/well_its_red.html">in general</a>), so it&rsquo;s not readily accessible for us to look up for that guy. There&rsquo;s no official place to put color in the MARC record format that most libraries use (there <i>are</i> fields for book height and the number of pages, so in theory you could search by book size, but most catalog interfaces don&rsquo;t allow you to search using those criteria).</p>
+
+<p>But these problems aren&rsquo;t insurmountable &ndash; after all, there are a lot of databases that <i>do</i> allow you to search for things by color. When I first started working in pharmacy libraries, I was stone cold delighted by pill identification databases. Back then you had to have a subscription but now any old overmedicated person can use the one at <a href="http://www.drugs.com/pill_identification.html">Drugs.com</a>. If you have a pill and you don&rsquo;t know what it is, you can enter in the color, the shape, and any identifying letters or numbers and hopefully figure out what it is. The trouble is that pills are not designed with pill identification tools in mind, and most pills are plain white tablets with no unique markings.</p>
+
+<p>A lot of online shopping sites will also let you search for things by color, but again problems arise &ndash; <a href="http://zappos.com">Zappos</a> does a really solid job with their search limits on things like available sizes and price range, but they kind of fall down on color. For example, &ldquo;nude&rdquo; is a really popular shoe color that most people could identify no problem, but if you want to use Zappos&#8217; search limits to find nude shoes you&rsquo;ll have to check beige, bone, and neutral, among others (in Zappos&#8217; defense, if you search &ldquo;nude&rdquo; as a keyword you do get a lot of nude shoes).</p>
+
+<h3>What makes a piece of information important?</h3>
+
+<p>So clearly there are problems with searching by color, but the pill ID databases and clothing retailers have accepted that they&rsquo;re problems that are worth dealing with. You <i>have</i> to let people search for shoes by color, because color is an important, intrinsic part thing about a shoe. We (usually) don&rsquo;t let people search for books by color because we don&rsquo;t think color is an important part of being a book. If you changed the color of a book from pink to green, it would still be the same book in pretty much any way that matters (arguments about <a href="http://designtaxi.com/news/357655/Why-Female-Authors-Tend-To-Get-Girly-Cheesy-Book-Covers/">girly book covers</a> aside). If you chage the color of a pair of shoes, the ways in which you can use those shoes change too. You can&rsquo;t wear them with that one dress anymore. Or maybe they don&rsquo;t fit in with your work dress code.</p>
+
+<p>Conversely, the color of a pill isn&rsquo;t actually all important to the pill &ndash; a blue pill works the same as a red one (<a href="http://www.ncbi.nlm.nih.gov/pmc/articles/PMC2359128/pdf/bmj00573-0060.pdf">maybe &ndash; PDF</a>) &ndash; but for someone using a pill identification tool it&rsquo;s one of very few pieces of information they have access to, so it becomes more important when you&rsquo;re trying to figure out if the handful of pills your toddler just ingested were Prilosec, OxyContin, or Altoids (and whether you need to get them to a stomach pump or just give them a timeout).</p>
+
+<h3>The case against book color</h3>
+
+<p>I&rsquo;m not intrinsically opposed to quirky cataloging or altering databases to allow for dumb searches. I have a huge soft spot for idiosyncratic library catalog records. At one of my jobs we always had students come ask us for a DVD called &ldquo;Five Cases of Domestic Violence&rdquo; that their professor had assigned. The only problem was that the DVD was actually called &ldquo;Elder Abuse.&rdquo; After a yearlong attempt to get the professor to fix it on his syllabus, we finally just added &ldquo;Five Cases of Domestic Violence&rdquo; as an alternate title. So you might think I&rsquo;d be on board with adding color to library records.</p>
+
+<p>Ultimately, though, my problem with searching a library catalog by color is that people who can only identify a book by color are, in my experience, generally so unreliable that they don&rsquo;t actually know what color the book is either. So adding color to the database would just give you another place to check before you ultimately figure out that the blue book that you&rsquo;ve been looking for for the last half hour is actually gray. Unfortunately I don&rsquo;t think there&rsquo;s a technological solution for that problem.</p>
+
+<ul>
+<li>A lot of librarians will then make fun of this guy behind his back, which I guess is understandable but, in my opinion, kind of unfair. He didn&rsquo;t know how to find the book himself, so he asked for help! If everybody knew how to find the information they need without any help (unlikely to happen anytime soon) librarians would have no reason to exist!</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[An exciting day]]></title>
+    <link href="http://mskyle.github.io/blog/2013/08/31/an-exciting-day/"/>
+    <updated>2013-08-31T18:44:00-04:00</updated>
+    <id>http://mskyle.github.io/blog/2013/08/31/an-exciting-day</id>
+    <content type="html"><![CDATA[<h3>Not So Good Morning</h3>
+
+<p>So today I decided I would get stuff done early, and at 8AM I was out the door. By 9AM I&rsquo;d been to Target, Trader Joe&rsquo;s, and Whole Foods (because I&rsquo;m a ridiculous parody of myself) which are way more pleasant to visit at 8AM than at normal times of day. I was really proud of myself. Self-satisfied, even!</p>
+
+<p>Then I came home and immediately locked myself out. My roommate was in Maine and I didn&rsquo;t know who else had keys (I&rsquo;m only staying there temporarily and haven&rsquo;t exactly got the full lay of the land yet). There was frozen food in the car. It was not a great situation. The house is a duplex and I was only locked out of the front door, not inner door, but the other owner had just left and I had no idea when she&rsquo;d be back, nor do I have her phone number.</p>
+
+<p>Then I remembered that other owner is always leaving her doors open, which I know because sometimes her cat wanders downstairs. So I thought, what the hell. How often do you have a good excuse to wander through a complete stranger&rsquo;s home? Moments later I was letting myself in the back door and sneaking through her apartment (I have not yet met this woman) and down the front stairs, where I was reunited with my keys, wallet, and other sundry belongings (to say nothing of the frozen vegetables).</p>
+
+<p>Then I let the cat escape up the stairs (this would be a cat who is supposed to live in my apartment, not the cat who lives in the upstairs apartment) and once again had to go upstairs to the other apartment to retrieve the cat. It was 9:30 and I already needed a nap.</p>
+
+<h3>A Relaxing Afternoon</h3>
+
+<p>Probably I should have just taken a nap at that point but instead I got down to work on my Breakable Toy project for Launch Academy. I&rsquo;m working on a web app that will let you record your hikes (dates, photos, etc.) and share them with other people. I&rsquo;m getting very attached to it!</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[First post, last blog]]></title>

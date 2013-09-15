@@ -4,7 +4,7 @@
   <title><![CDATA[Kyle's blog]]></title>
   <link href="http://mskyle.github.io/atom.xml" rel="self"/>
   <link href="http://mskyle.github.io/"/>
-  <updated>2013-09-01T10:59:46-04:00</updated>
+  <updated>2013-09-15T10:13:12-04:00</updated>
   <id>http://mskyle.github.io/</id>
   <author>
     <name><![CDATA[Kyle]]></name>
@@ -12,6 +12,29 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[How Launch Academy is (and is not) like Hogwarts]]></title>
+    <link href="http://mskyle.github.io/blog/2013/09/15/how-launch-academy-is-and-is-not-like-hogwarts/"/>
+    <updated>2013-09-15T10:10:00-04:00</updated>
+    <id>http://mskyle.github.io/blog/2013/09/15/how-launch-academy-is-and-is-not-like-hogwarts</id>
+    <content type="html"><![CDATA[<p>Having trouble writing a proper blog entry so here is something that might only make sense to tech bootcamp participants who are also unhealthily obsessed with Harry Potter.</p>
+
+<ol>
+<li><p>SOMETIMES YOU HAVE TO SAY THINGS IN UPCASE. (See: most of <em>Harry Potter and the Order of the Phoenix</em>, SQL statements, constants.)</p></li>
+<li><p>You have to leave your old life behind, pretty much (admittedly this seems to be much more complete and permanent in Harry Potter world than in tech world).</p></li>
+<li><p>It&rsquo;s really hard to explain to outsiders. After about three rounds of &ldquo;Oh, what university are you at?&rdquo; &ldquo;So you&rsquo;re getting a certificate?&rdquo; &ldquo;And then you get a job?&rdquo; I start imagining how Hermione must have explained where she went to school (and her eventual job) to childhood friends and non-immediate family. Leave me alone, Muggles! I don&rsquo;t want to get into it!</p></li>
+<li><p>Competitive intramurals. OK, mentor group kickball is no inter-house Quidditch. But it&rsquo;s something. And there&rsquo;s, like, xbox and fantasy football and things.</p></li>
+<li><p>One nice thing about Launch Academy is that it&rsquo;s a lot less violent and dangerous than Hogwarts. And troll-free, so far!</p></li>
+<li><p>On the down side, we don&rsquo;t have any magical animals, or indeed any animals at all. There&rsquo;s an outside possibility we might have thestrals.</p></li>
+<li><p>You&rsquo;re thrown in with a bunch of people from diverse backgrounds who have wildly divergent degrees of familiarity with the material and the community.</p></li>
+<li><p>Hogwarts and Launch Academy: both accessible by train.</p></li>
+<li><p>Hogwarts: butterbeer. Launch Academy: beer. Advantage: Launch Academy.</p></li>
+<li><p>You get to learn arcane knowledge that lets you do things you kind of suspected were possible but couldn&rsquo;t do before. And really, on the whole, I think &ldquo;rails new&rdquo; is a lot more useful than, like, turning kittens into teacups or whatever the heck they get up to.</p></li>
+</ol>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Stuff about Things]]></title>

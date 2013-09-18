@@ -4,7 +4,7 @@
   <title><![CDATA[Kyle's blog]]></title>
   <link href="http://mskyle.github.io/atom.xml" rel="self"/>
   <link href="http://mskyle.github.io/"/>
-  <updated>2013-09-15T10:13:12-04:00</updated>
+  <updated>2013-09-18T17:26:04-04:00</updated>
   <id>http://mskyle.github.io/</id>
   <author>
     <name><![CDATA[Kyle]]></name>
@@ -12,6 +12,49 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Fun with has_many through:]]></title>
+    <link href="http://mskyle.github.io/blog/2013/09/18/fun-with-has-many-through/"/>
+    <updated>2013-09-18T16:02:00-04:00</updated>
+    <id>http://mskyle.github.io/blog/2013/09/18/fun-with-has-many-through</id>
+    <content type="html"><![CDATA[<p>tl;dr: When you&rsquo;re using has_many through: in Rails, the order of your has_many statements matters. If you&rsquo;re using a join table with a through: association, declare the associations for the join table ABOVE the declarations for the child table.</p>
+
+<p>Today I learned a big lesson about using has_many with join tables! I&rsquo;m finally getting to actually build the rails app I&rsquo;ve been planning since the beginning of Launch Academy and right now I&rsquo;m doing a first draft of some of the forms.</p>
+
+<p>Basically in my app people record hiking trips they&rsquo;ve taken &ndash; they can indicate who they hike with and what mountains they&rsquo;ve hiked. Trips* and mountains have a many-to-many relationship (one hiking trip could involve multiple mountains, and of course mountains can be hiked more than once), which I&rsquo;m keeping track of with a join table (trip_mountains).</p>
+
+<p>Last night, after some angst caused by the way I was validating the mountain and the trip in the trip_mountain model (hint: rather than validating trip_id and mountain_id, validate the presence of the trip and the mountain). So today, knowing what I&rsquo;d done wrong yesterday, I decided to add users to the form (so that you can indicate who&rsquo;s on the hike with you).</p>
+
+<p>That&rsquo;s when the PG null errors started. I couldn&rsquo;t get any of my trips to save because Rails wasn&rsquo;t generating a valid entry for the trip_mountain join table. I could force create a trip_mountain in the rails console if I supplied a trip id and mountain id, but I couldn&rsquo;t create one as part of the trip creation, which was the whole point.</p>
+
+<p>Anyway, something had gone wrong with my associations. But what? And how? I hadn&rsquo;t messed with them at all!** Finally, in frustration, I copied over the associations from a working project of <a href="https://twitter.com/heroiceric">@heroiceric</a>&rsquo;s. They looked EXACTLY THE SAME as the associations I had just commented out. EXACTLY THE SAME. But, it turned out, they were in the opposite order.</p>
+
+<p>Here&rsquo;s how I fixed the problem. I went from:</p>
+
+<pre><code>has_many :mountains, through: :trip_mountains, inverse_of: :trips
+has_many :trip_mountains, inverse_of: :trip
+</code></pre>
+
+<p>to:</p>
+
+<pre><code>has_many :trip_mountains, inverse_of: :trip 
+has_many :mountains, through: :trip_mountains, inverse_of: :trips 
+</code></pre>
+
+<p>And, ta-da, everything was fixed. Woo-hoo.</p>
+
+<p>Earlier in the day when I added my user associations to the model, I shifted things around a little to neaten them up. Originally the join table associations were grouped together and then underneath I had the child table associations; I decided it would be neater to have the user-related associations next to each other and the mountain-related table associations together. That would have been fine, except I must have reversed the order of the declarations in the process. Which turns out to matter.</p>
+
+<p>It does make sense to declare the join table associations above the child table associations &ndash; obviously, the child associations don&rsquo;t work without the join table. And in all the <a href="http://guides.rubyonrails.org/association_basics.html">documentation for Associations</a> they always do the join table above the child table.</p>
+
+<p>But I, with my infinite faith in Rails, just assumed Rails would be able to figure that out. It can&rsquo;t! Declare your parent associations above the child associations or else Rails won&rsquo;t know how to get the right ids into the right join tables and you&rsquo;ll get PG null errors! Learn from my mistake!</p>
+
+<p>* I have to call them &ldquo;trips&rdquo; instead of &ldquo;hikes&rdquo; because of the hike gem.</p>
+
+<p>** This turned out to be not entirely true.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[How Launch Academy is (and is not) like Hogwarts]]></title>

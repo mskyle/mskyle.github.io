@@ -4,7 +4,7 @@
   <title><![CDATA[Kyle's blog]]></title>
   <link href="http://mskyle.github.io/atom.xml" rel="self"/>
   <link href="http://mskyle.github.io/"/>
-  <updated>2013-09-22T12:47:28-04:00</updated>
+  <updated>2013-10-10T18:37:31-04:00</updated>
   <id>http://mskyle.github.io/</id>
   <author>
     <name><![CDATA[Kyle]]></name>
@@ -12,6 +12,15 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[RSS madness]]></title>
+    <link href="http://mskyle.github.io/blog/2013/10/10/rss-madness/"/>
+    <updated>2013-10-10T18:34:00-04:00</updated>
+    <id>http://mskyle.github.io/blog/2013/10/10/rss-madness</id>
+    <content type="html"><![CDATA[<p>Writing an RSS aggregator is a much more emotional process than I expected. The thrill of actually getting thing to work! The agony of fearing that no one will be using RSS anymore by the time you&rsquo;re finished! The dream of replacing Google Reader! The drudgery of writing dumb blog posts to pull into the app!</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Fun with has_many through:]]></title>

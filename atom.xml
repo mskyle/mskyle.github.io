@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Kyle's blog]]></title>
+  <link href="http://mskyle.github.io/atom.xml" rel="self"/>
+  <link href="http://mskyle.github.io/"/>
+  <updated>2013-10-10T18:37:31-04:00</updated>
+  <id>http://mskyle.github.io/</id>
+  <author>
+    <name><![CDATA[Kyle]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[RSS madness]]></title>
+    <link href="http://mskyle.github.io/blog/2013/10/10/rss-madness/"/>
+    <updated>2013-10-10T18:34:00-04:00</updated>
+    <id>http://mskyle.github.io/blog/2013/10/10/rss-madness</id>
+    <content type="html"><![CDATA[<p>Writing an RSS aggregator is a much more emotional process than I expected. The thrill of actually getting thing to work! The agony of fearing that no one will be using RSS anymore by the time you&rsquo;re finished! The dream of replacing Google Reader! The drudgery of writing dumb blog posts to pull into the app!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Fun with has_many through:]]></title>
+    <link href="http://mskyle.github.io/blog/2013/09/18/fun-with-has-many-through/"/>
+    <updated>2013-09-18T16:02:00-04:00</updated>
+    <id>http://mskyle.github.io/blog/2013/09/18/fun-with-has-many-through</id>
+    <content type="html"><![CDATA[<p>tl;dr: When you&rsquo;re using has_many through: in Rails, the order of your has_many statements matters. If you&rsquo;re using a join table with a through: association, declare the associations for the join table ABOVE the declarations for the child table.</p>
+
+<p>Today I learned a big lesson about using has_many with join tables! I&rsquo;m finally getting to actually build the rails app I&rsquo;ve been planning since the beginning of Launch Academy and right now I&rsquo;m doing a first draft of some of the forms.</p>
+
+<p>Basically in my app people record hiking trips they&rsquo;ve taken &ndash; they can indicate who they hike with and what mountains they&rsquo;ve hiked. Trips* and mountains have a many-to-many relationship (one hiking trip could involve multiple mountains, and of course mountains can be hiked more than once), which I&rsquo;m keeping track of with a join table (trip_mountains).</p>
+
+<p>Last night, after some angst caused by the way I was validating the mountain and the trip in the trip_mountain model (hint: rather than validating trip_id and mountain_id, validate the presence of the trip and the mountain). So today, knowing what I&rsquo;d done wrong yesterday, I decided to add users to the form (so that you can indicate who&rsquo;s on the hike with you).</p>
+
+<p>That&rsquo;s when the PG null errors started. I couldn&rsquo;t get any of my trips to save because Rails wasn&rsquo;t generating a valid entry for the trip_mountain join table. I could force create a trip_mountain in the rails console if I supplied a trip id and mountain id, but I couldn&rsquo;t create one as part of the trip creation, which was the whole point.</p>
+
+<p>Anyway, something had gone wrong with my associations. But what? And how? I hadn&rsquo;t messed with them at all!** Finally, in frustration, I copied over the associations from a working project of <a href="https://twitter.com/heroiceric">@heroiceric</a>&rsquo;s. They looked EXACTLY THE SAME as the associations I had just commented out. EXACTLY THE SAME. But, it turned out, they were in the opposite order.</p>
+
+<p>Here&rsquo;s how I fixed the problem. I went from:</p>
+
+<pre><code>has_many :mountains, through: :trip_mountains, inverse_of: :trips
+has_many :trip_mountains, inverse_of: :trip
+</code></pre>
+
+<p>to:</p>
+
+<pre><code>has_many :trip_mountains, inverse_of: :trip 
+has_many :mountains, through: :trip_mountains, inverse_of: :trips 
+</code></pre>
+
+<p>And, ta-da, everything was fixed. Woo-hoo.</p>
+
+<p>Earlier in the day when I added my user associations to the model, I shifted things around a little to neaten them up. Originally the join table associations were grouped together and then underneath I had the child table associations; I decided it would be neater to have the user-related associations next to each other and the mountain-related table associations together. That would have been fine, except I must have reversed the order of the declarations in the process. Which turns out to matter.</p>
+
+<p>It does make sense to declare the join table associations above the child table associations &ndash; obviously, the child associations don&rsquo;t work without the join table. And in all the <a href="http://guides.rubyonrails.org/association_basics.html">documentation for Associations</a> they always do the join table above the child table.</p>
+
+<p>But I, with my infinite faith in Rails, just assumed Rails would be able to figure that out. It can&rsquo;t! Declare your parent associations above the child associations or else Rails won&rsquo;t know how to get the right ids into the right join tables and you&rsquo;ll get PG null errors! Learn from my mistake!</p>
+
+<p>* I have to call them &ldquo;trips&rdquo; instead of &ldquo;hikes&rdquo; because of the hike gem.</p>
+
+<p>** This turned out to be not entirely true.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[How Launch Academy is (and is not) like Hogwarts]]></title>
+    <link href="http://mskyle.github.io/blog/2013/09/15/how-launch-academy-is-and-is-not-like-hogwarts/"/>
+    <updated>2013-09-15T10:10:00-04:00</updated>
+    <id>http://mskyle.github.io/blog/2013/09/15/how-launch-academy-is-and-is-not-like-hogwarts</id>
+    <content type="html"><![CDATA[<p>Having trouble writing a proper blog entry so here is something that might only make sense to tech bootcamp participants who are also unhealthily obsessed with Harry Potter.</p>
+
+<ol>
+<li><p>SOMETIMES YOU HAVE TO SAY THINGS IN UPCASE. (See: most of <em>Harry Potter and the Order of the Phoenix</em>, SQL statements, constants.)</p></li>
+<li><p>You have to leave your old life behind, pretty much (admittedly this seems to be much more complete and permanent in Harry Potter world than in tech world).</p></li>
+<li><p>It&rsquo;s really hard to explain to outsiders. After about three rounds of &ldquo;Oh, what university are you at?&rdquo; &ldquo;So you&rsquo;re getting a certificate?&rdquo; &ldquo;And then you get a job?&rdquo; I start imagining how Hermione must have explained where she went to school (and her eventual job) to childhood friends and non-immediate family. Leave me alone, Muggles! I don&rsquo;t want to get into it!</p></li>
+<li><p>Competitive intramurals. OK, mentor group kickball is no inter-house Quidditch. But it&rsquo;s something. And there&rsquo;s, like, xbox and fantasy football and things.</p></li>
+<li><p>One nice thing about Launch Academy is that it&rsquo;s a lot less violent and dangerous than Hogwarts. And troll-free, so far!</p></li>
+<li><p>On the down side, we don&rsquo;t have any magical animals, or indeed any animals at all. There&rsquo;s an outside possibility we might have thestrals.</p></li>
+<li><p>You&rsquo;re thrown in with a bunch of people from diverse backgrounds who have wildly divergent degrees of familiarity with the material and the community.</p></li>
+<li><p>Hogwarts and Launch Academy: both accessible by train.</p></li>
+<li><p>Hogwarts: butterbeer. Launch Academy: beer. Advantage: Launch Academy.</p></li>
+<li><p>You get to learn arcane knowledge that lets you do things you kind of suspected were possible but couldn&rsquo;t do before. And really, on the whole, I think &ldquo;rails new&rdquo; is a lot more useful than, like, turning kittens into teacups or whatever the heck they get up to.</p></li>
+</ol>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Stuff about Things]]></title>
+    <link href="http://mskyle.github.io/blog/2013/09/01/stuff-about-things/"/>
+    <updated>2013-09-01T08:22:00-04:00</updated>
+    <id>http://mskyle.github.io/blog/2013/09/01/stuff-about-things</id>
+    <content type="html"><![CDATA[<h3>What do we think we need to know</h3>
+
+<p>So, right now I&rsquo;m in the process of going from being a librarian to being a software developer. I&rsquo;m studying with a lot of great people at Launch Academy and it&rsquo;s a lot of fun so far, though I&rsquo;m often completely overwhelmed and/or confused. Right now we&rsquo;re moving from Object Oriented Programming to SQL; I feel good about the first and the second is something I&rsquo;ve interacted with in a half-assed way for many years (why, why, why didn&rsquo;t I take that databases class in library school?).</p>
+
+<p>It&rsquo;s gotten me thinking, though, about how we describe things, which is something librarians and coders both do a lot of. I think every librarian (or really anyone who&rsquo;s worked at the interface of books and people) has a story about a guy who wants a book, but only knows that it&rsquo;s big and blue. The great thing is that a knowledgable librarian (or bookstore employee) can often actually help this guy, especially if he&rsquo;s asking for a popular book.*</p>
+
+<h3>Why can&rsquo;t we do more to help that guy?</h3>
+
+<p>In general, though, we don&rsquo;t keep information about a book&rsquo;s color in its library record (<a href="http://portia.nesl.edu/screens/well_its_red.html">in general</a>), so it&rsquo;s not readily accessible for us to look up for that guy. There&rsquo;s no official place to put color in the MARC record format that most libraries use (there <i>are</i> fields for book height and the number of pages, so in theory you could search by book size, but most catalog interfaces don&rsquo;t allow you to search using those criteria).</p>
+
+<p>But these problems aren&rsquo;t insurmountable &ndash; after all, there are a lot of databases that <i>do</i> allow you to search for things by color. When I first started working in pharmacy libraries, I was stone cold delighted by pill identification databases. Back then you had to have a subscription but now any old overmedicated person can use the one at <a href="http://www.drugs.com/pill_identification.html">Drugs.com</a>. If you have a pill and you don&rsquo;t know what it is, you can enter in the color, the shape, and any identifying letters or numbers and hopefully figure out what it is. The trouble is that pills are not designed with pill identification tools in mind, and most pills are plain white tablets with no unique markings.</p>
+
+<p>A lot of online shopping sites will also let you search for things by color, but again problems arise &ndash; <a href="http://zappos.com">Zappos</a> does a really solid job with their search limits on things like available sizes and price range, but they kind of fall down on color. For example, &ldquo;nude&rdquo; is a really popular shoe color that most people could identify no problem, but if you want to use Zappos&#8217; search limits to find nude shoes you&rsquo;ll have to check beige, bone, and neutral, among others (in Zappos&#8217; defense, if you search &ldquo;nude&rdquo; as a keyword you do get a lot of nude shoes).</p>
+
+<h3>What makes a piece of information important?</h3>
+
+<p>So clearly there are problems with searching by color, but the pill ID databases and clothing retailers have accepted that they&rsquo;re problems that are worth dealing with. You <i>have</i> to let people search for shoes by color, because color is an important, intrinsic part thing about a shoe. We (usually) don&rsquo;t let people search for books by color because we don&rsquo;t think color is an important part of being a book. If you changed the color of a book from pink to green, it would still be the same book in pretty much any way that matters (arguments about <a href="http://designtaxi.com/news/357655/Why-Female-Authors-Tend-To-Get-Girly-Cheesy-Book-Covers/">girly book covers</a> aside). If you chage the color of a pair of shoes, the ways in which you can use those shoes change too. You can&rsquo;t wear them with that one dress anymore. Or maybe they don&rsquo;t fit in with your work dress code.</p>
+
+<p>Conversely, the color of a pill isn&rsquo;t actually all important to the pill &ndash; a blue pill works the same as a red one (<a href="http://www.ncbi.nlm.nih.gov/pmc/articles/PMC2359128/pdf/bmj00573-0060.pdf">maybe &ndash; PDF</a>) &ndash; but for someone using a pill identification tool it&rsquo;s one of very few pieces of information they have access to, so it becomes more important when you&rsquo;re trying to figure out if the handful of pills your toddler just ingested were Prilosec, OxyContin, or Altoids (and whether you need to get them to a stomach pump or just give them a timeout).</p>
+
+<h3>The case against book color</h3>
+
+<p>I&rsquo;m not intrinsically opposed to quirky cataloging or altering databases to allow for dumb searches. I have a huge soft spot for idiosyncratic library catalog records. At one of my jobs we always had students come ask us for a DVD called &ldquo;Five Cases of Domestic Violence&rdquo; that their professor had assigned. The only problem was that the DVD was actually called &ldquo;Elder Abuse.&rdquo; After a yearlong attempt to get the professor to fix it on his syllabus, we finally just added &ldquo;Five Cases of Domestic Violence&rdquo; as an alternate title. So you might think I&rsquo;d be on board with adding color to library records.</p>
+
+<p>Ultimately, though, my problem with searching a library catalog by color is that people who can only identify a book by color are, in my experience, generally so unreliable that they don&rsquo;t actually know what color the book is either. So adding color to the database would just give you another place to check before you ultimately figure out that the blue book that you&rsquo;ve been looking for for the last half hour is actually gray. Unfortunately I don&rsquo;t think there&rsquo;s a technological solution for that problem.</p>
+
+<ul>
+<li>A lot of librarians will then make fun of this guy behind his back, which I guess is understandable but, in my opinion, kind of unfair. He didn&rsquo;t know how to find the book himself, so he asked for help! If everybody knew how to find the information they need without any help (unlikely to happen anytime soon) librarians would have no reason to exist!</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[First post, last blog]]></title>
+    <link href="http://mskyle.github.io/blog/2013/08/29/first-post-last-blog/"/>
+    <updated>2013-08-29T16:00:00-04:00</updated>
+    <id>http://mskyle.github.io/blog/2013/08/29/first-post-last-blog</id>
+    <content type="html"><![CDATA[<p>I was raised in an outdoorsy family, and when I was 13 my family went on an all-day cross-country ski trip. Like, we gathered at my uncle&rsquo;s house on a nice Saturday morning in February and we started skiing around 10AM. We stopped for a nice lunch on a frozen lake, and then kept skiing for five more hours until it was raining. Then we trudged up a hill to wait by the side of the road in the gathering twilight while my dad and my uncle hitckhiked back to the cars, because even after seven hours of skiing (did you know that cross-country skiing is one of the most intense forms of aerobic exercise?) we hadn&rsquo;t gotten to the planned finish point of our little ski tour.</p>
+
+<p>That evening, I swore that I would never go cross-country skiing again. My parents, who are smart people, realized that there was no point in pretending that the day had been anything other than an epically horrible slog through the woods of Maine in soaking wet clothes (and did I mention that I was pretty well the slowest of all my cousins, including Loren, who was six?) and so they agreed that I would not be expected to go cross-country skiing in the future. I think they thought I would cave and ski again after a few trips, or certainly by the next winter.</p>
+
+<p>They were wrong. While the rest of the family would go skiing, I would stay in my uncle&rsquo;s house and read books or watch old movies. I did not go cross-country skiing again for eighteen years.</p>
+
+<p>But eventually I did. Nowadays I&rsquo;m more of a snowshoer (snow-shoer?)than a XC skier, and I don&rsquo;t own my own skis or boots, but I can on occasion be lured out onto a snow-covered golf course.</p>
+
+<p>Anyway, that&rsquo;s a long way of saying that I said I wasn&rsquo;t going to start any more blogs. I guess leaving a trail of discarded online presences is just a fact of modern life, but some part of me can&rsquo;t help but see it as evidence of failure or a lack of stick-to-itiveness: the circa-1996 personal homepage I made about how much I liked five dollar bills and doing laundry, the defunct livejournal, the not-updated-for-three-years knitting blog, the travel blog that I sometimes remember to update after a big trip, the tumblr and the Instagram and who even knows what else.</p>
+
+<p>But here I am. Blogging again. Let&rsquo;s call it a project blog: I will keep this blog while I&rsquo;m at <a href="http://www.launchacademy.com/">Launch Academy</a>, and I&rsquo;ll talk about learning to code and my Breakable Toy project, and probably some other stuff. Then if, come November, I decide to let this blog join the others in the virtual blog graveyard, that will be OK, because that was always the plan. And if I want to keep going with it, that&rsquo;s cool too.</p>
+]]></content>
+  </entry>
+  
+</feed>

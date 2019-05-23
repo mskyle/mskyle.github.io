@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
+    <url>
+        <loc>http://mskyle.github.io/blog/2013/08/29/first-post-last-blog/</loc>
+        <lastmod>2013-09-22T12:13:15-04:00</lastmod>
+    </url>
+    <url>
+        <loc>http://mskyle.github.io/blog/2013/09/01/stuff-about-things/</loc>
+        <lastmod>2013-09-22T12:13:15-04:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://mskyle.github.io/blog/2013/09/15/how-launch-academy-is-and-is-not-like-hogwarts/
+        </loc>
+        <lastmod>2013-09-22T12:13:15-04:00</lastmod>
+    </url>
+    <url>
+        <loc>http://mskyle.github.io/blog/2013/09/18/fun-with-has-many-through/</loc>
+        <lastmod>2013-09-22T12:13:15-04:00</lastmod>
+    </url>
+    <url>
+        <loc>http://mskyle.github.io/blog/2013/10/10/rss-madness/</loc>
+        <lastmod>2013-10-10T18:37:27-04:00</lastmod>
+    </url>
+    <url>
+        <loc>http://mskyle.github.io/blog/archives/</loc>
+        <lastmod>2013-10-10T18:37:27-04:00</lastmod>
+    </url>
+    <url>
+        <loc>http://mskyle.github.io/</loc>
+        <lastmod>2013-10-10T18:37:27-04:00</lastmod>
+    </url>
+    <url>
+        <loc>http://mskyle.github.io/robots.txt</loc>
+        <lastmod>2013-09-08T14:05:32-04:00</lastmod>
+    </url>
+</urlset>
